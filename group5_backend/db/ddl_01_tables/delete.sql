@@ -1,0 +1,12 @@
+-- drop everything safely
+
+DROP TABLE IF EXISTS connection;
+DROP TABLE IF EXISTS zone_room;
+DROP TABLE IF EXISTS zone;
+DROP TABLE IF EXISTS hallway;
+DROP TABLE IF EXISTS room;
+DROP TABLE IF EXISTS transport_stop;
+DROP TABLE IF EXISTS transport_shaft;
+DROP TABLE IF EXISTS floor;
+DROP TABLE IF EXISTS building;
+DROP TABLE IF EXISTS campus;
