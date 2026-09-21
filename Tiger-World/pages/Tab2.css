@@ -1,0 +1,14 @@
+.fab-card {
+  background: var(--ion-color-light);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  width: 90vw;
+  max-height: 120px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fab-card.expanded {
+  max-height: 500px; /* adjust as needed */
+}
