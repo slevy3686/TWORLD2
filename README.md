@@ -23,7 +23,7 @@
    1. (If MySQL was installed for all users)
       1. Via terminal, navigate to:
          `/usr/local/mysql/bin/mysql -u root -p`
-      2. Enter the password you set during installation: `abcd1234`
+      2. Enter the password you set during installation: `(your chosen password)`
       3. Once inside the MySQL prompt, you should see something like:
          `mysql>`
       4. From there, enter:
@@ -39,7 +39,7 @@
       1. (If MySQL was installed for all users)
          1. Via terminal, navigate to:
             `/usr/local/mysql/bin/mysql -u root -p`
-         2. Enter the password you set during installation: `abcd1234`
+         2. Enter the password you set during installation: `(your chosen password)`
          3. Once inside the MySQL prompt, you should see something like:
             `mysql>`
             1. Enter the following command:
@@ -52,7 +52,7 @@
    1. Environment variables live in:
       1. `(cloned) repository -> group5_backend -> node -> .env`
    2. If you followed the following instructions, this step is not necessary:
-      1. Set root password: `abcd1234`
+      1. Set root password: `(your chosen password)`
       2. Create database `mydatabase`
 
 # Step 2 - Start the Backend Server
