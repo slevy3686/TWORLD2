@@ -1,8 +1,10 @@
 ## Strongest Design Points
 
-### 1. Connections between different types of infrastructure
+### 1. Connections model the campus as a traversable graph
 
-The connection system lets two different kinds of infrastructure be connected using a **type + ID**, for example:
+The connection system lets different kinds of infrastructure act as **nodes in a graph**, with connections acting as **edges between those nodes**.
+
+Each endpoint is identified using a **type + ID**, for example:
 
 - `ROOM + 150`
 - `HALLWAY + 12`
@@ -11,7 +13,7 @@ The connection system lets two different kinds of infrastructure be connected us
 
 The backend checks that each `(type, ID)` pair refers to an existing object before creating the connection. It also prevents an object from being connected to itself and enforces a consistent ordering for the two endpoints, so `ROOM 150 → HALLWAY 12` and `HALLWAY 12 → ROOM 150` cannot be stored as two separate connections.
 
-This creates one general connection system that can connect different types of map objects without needing a separate connection system for every possible pair.
+Because the infrastructure is represented as a graph, pathfinding can be added using standard graph algorithms. For example, finding a route from **Room 150 → Hallway → Elevator/Stairway Fragment → Floor 2 → Room 250** becomes a graph traversal problem rather than requiring a separate route to be manually defined for every possible pair of rooms.
 
 ### 2. Status that can reflect what is actually unavailable
 
