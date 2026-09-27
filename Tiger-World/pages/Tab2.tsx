@@ -187,7 +187,7 @@ const startRoute = async () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-Goog-Api-Key": "AIzaSyBEt2zDtjYZ9PKc1E4oEti5o4_2mDBiPsI",
+        "X-Goog-Api-Key": "import.meta.env.VITE_GOOGLE_MAPS_API_KEY",
         "X-Goog-FieldMask":
           "routes.distanceMeters,routes.duration,routes.polyline.encodedPolyline",
       },
