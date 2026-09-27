@@ -49,10 +49,9 @@ The frontend can work with information that is convenient for the application, w
 
 For example, `printRooms()` sends:
 
-```text
-campus_name
-building_name
-floor_number
+`campus_name`
+`building_name`
+`floor_number`
 
 The backend then:
 
