@@ -1,3 +1,18 @@
+## What is it?
+
+- An attempt to create a precise global-positioning application for live routing between point A and point B within a localized institution (i.e., from classroom A in building A to classroom B in building B, where both building A and building B belong to the same campus).
+
+## My (main) contributions
+
+- The database, the composite API calls, the front-end wrapper functions for the API calls, and the print menu for primitive testing of the API calls.
+
+- **Database filepath:** `Tiger-World/group5_backend/db`
+- **Database-node (1st half of API calls) filepath:** `Tiger-World/group5_backend/node`
+- **Node-frontend (2nd half of API calls) filepath:** `Tiger-World/group5_frontend/src/services`
+- **Wrapper functions filepath:** `Tiger-World/group5_frontend/src/frontend_CLI.js`
+
+> **NOTE:** Some of this content was generated with the heavily monitored assistance of GenAI.
+
 ## Strongest Design Points
 
 ### 1. Connections model the campus as a traversable graph
