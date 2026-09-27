@@ -1,6 +1,6 @@
 ## Strongest Design Points
 
-### 1. Connections that can link different kinds of map objects
+### 1. Connections between different types of infrastructure
 
 The connection system lets two different kinds of infrastructure be connected using a **type + ID**, for example:
 
@@ -9,9 +9,9 @@ The connection system lets two different kinds of infrastructure be connected us
 - `ELEVATOR/STAIRWAY FRAGMENT + 7`
 - `CAMPUS + 1`
 
-The backend uses the type to determine **which table the ID should refer to**, then checks that the specific object exists before creating the connection. It also enforces a consistent order for the two endpoints, so `ROOM 150 → HALLWAY 12` and `HALLWAY 12 → ROOM 150` cannot become two separate connections.
+The backend checks that each `(type, ID)` pair refers to an existing object before creating the connection. It also prevents an object from being connected to itself and enforces a consistent ordering for the two endpoints, so `ROOM 150 → HALLWAY 12` and `HALLWAY 12 → ROOM 150` cannot be stored as two separate connections.
 
-This creates a general connection system without needing a separate connection table for every possible pair of infrastructure types.
+This creates one general connection system that can connect different types of map objects without needing a separate connection system for every possible pair.
 
 ### 2. Status that can reflect what is actually unavailable
 
@@ -19,36 +19,43 @@ The status system separates an object's **stored status** from its **effective s
 
 For example, a floor can have its own stored status of `AVAILABLE`, while one of its rooms, hallways, or elevator/stairway fragments is `UNAVAILABLE`. The backend can then report the floor's effective status as `UNAVAILABLE`, allowing the map to show that **something on the floor is unavailable** without changing the floor's stored value.
 
-The same idea can continue upward, so an unavailable floor can affect the effective status shown for its building.
+The same idea continues upward, so an unavailable floor can affect the effective status shown for its building, and an unavailable building can affect its campus.
 
-### 3. Event searches that can search through the infrastructure hierarchy
+### 3. Event searching with validation and child-object expansion
 
-The event system can search for events attached to a specific infrastructure object and optionally **include its child objects**.
+The event search system supports many combinations of search conditions, including event name, exact date, date range, start/end time, infrastructure type, and a specific infrastructure ID.
 
-For example, searching a building with `include_children=true` can include events belonging to that building's **floors, zones, and rooms**. Searching a floor can similarly include its zones and rooms.
+It also checks that the search parameters are valid before building the SQL query. For example:
 
-The backend does this by following the actual database relationships instead of requiring the frontend to already know every child object's ID.
+- `infra_ID` cannot be used without `infra_type`
+- an exact `event_date` cannot be combined with a date range
+- a date range must contain both a start and end date
+- `infra_ID` cannot be requested as a result without `infra_type`
+- requested result fields are checked against an allowed list
 
-### 4. Human-readable frontend requests converted into database relationships
+The system can also optionally **include child infrastructure** when searching. For example, an event search for a **BUILDING** can include events belonging to its **floors, zones, and rooms**. A search for a **FLOOR** can similarly include its zones and rooms.
 
-The frontend can request something like:
+The search can additionally return the users who are tracking each matching event when requested.
 
-`campus_name + building_name + floor_number`
+### 4. Frontend state is passed through the infrastructure hierarchy
 
-instead of needing to keep track of the database IDs for every parent object.
+The frontend was designed so that information selected by the user can be kept in local variables and passed between functions as the user moves through the campus hierarchy.
 
-The backend resolves the hierarchy itself:
+For example, after selecting a campus, the frontend can pass the `campus_name` into the building request. After selecting a building, it can pass both `campus_name` and `building_name` into the floor request. After selecting a floor, it can continue passing those values along with the `floor_number` when requesting rooms or hallways.
 
-`campus name → campus_ID → building_ID → floor_ID → rooms`
+This keeps the frontend's current selections available as the user moves through **campus → building → floor → room**, while the backend resolves those names and numbers to the appropriate database IDs.
 
-For example, `printRooms()` can receive `"LSU"`, `"PFT"`, and floor `1`, and the backend finds the correct database records before retrieving the rooms.
+### 5. One infrastructure model is reused across multiple features
 
-This keeps database-specific IDs out of much of the frontend logic while still allowing the backend to use IDs internally.
+The database's infrastructure hierarchy is not only used for storing the campus map. The same relationships are reused by multiple parts of the application.
 
-### 5. One backend system connects several layers of the application
+For example, a room can be:
 
-The project is not just a collection of SQL tables or isolated API routes. The same infrastructure model is carried through the **database, backend, and frontend**.
+- retrieved through its campus, building, and floor
+- assigned to a zone
+- connected to a hallway or another map object
+- given an availability status
+- included in a building or floor event search
+- used as part of the map's infrastructure structure
 
-For example, creating a room can start with human-readable frontend input, pass through an Axios API function, resolve the campus/building/floor relationships in the backend, and finally insert the room using the correct database IDs. The same infrastructure can later be found by print routes, connected to other map objects, assigned to a zone, used in event searches, and included in status calculations.
-
-The different parts of the application therefore work from the same underlying model instead of each layer maintaining its own separate understanding of the campus.
+This means the database relationships form a shared foundation for the application's different features rather than each feature maintaining its own separate representation of the campus.
