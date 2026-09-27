@@ -2,26 +2,54 @@
 
 ### 1. Generic graph-based connections
 
-The `connection` table lets different types of objects act as connected nodes, such as **ROOM → HALLWAY → elevator/stairway fragment**, without creating separate connection tables for every combination. Each object is identified by a **type + ID**, so the system can determine which specific database entity a connection refers to.
+The `connection` table allows different types of infrastructure to be connected using one common structure instead of creating a separate table for every possible connection type. Each side of a connection is represented by a **type + ID**, such as `ROOM + 150` or `HALLWAY + 12`, so the application can identify what kind of infrastructure the connection refers to.
 
-The database also uses a consistent ordering for the two sides of a connection, preventing the same connection from being stored twice in reverse.
+For example, the same system can represent **ROOM → HALLWAY**, **HALLWAY → elevator/stairway fragment**, or **HALLWAY → CAMPUS** connections. The table also enforces a consistent order for the two sides, so the same connection cannot be stored once as `A → B` and again as `B → A`.
+
+This is particularly useful for the campus map because the connections can be treated as a network of nodes without requiring a different database structure for every possible pair of infrastructure types.
 
 ### 2. Backend searches across related data
 
-The backend can search across multiple levels of related data instead of only searching the exact object requested. For example, when an event search is made for a **BUILDING** with `include_children=true`, the query includes events assigned to that building **as well as events assigned to its floors, zones, and rooms**. The same feature also works for a **FLOOR** or **ZONE**, including their lower-level entities.
+The backend can search across multiple levels of related data instead of only searching the exact object requested.
+
+For example, when an event search is made for a **BUILDING** with `include_children=true`, the query includes events assigned to:
+
+- the building itself
+- floors belonging to that building
+- zones belonging to those floors
+- rooms belonging to those floors
+
+The same feature works at lower levels. A **FLOOR** search with `include_children=true` includes its zones and rooms, while a **ZONE** search includes its rooms.
+
+This means one API request can intentionally expand from a selected infrastructure object to the lower-level objects belonging to it.
 
 ### 3. One API handles many combinations of searches
 
-The event API supports combinations of **event name, date/date range, time, infrastructure type, infrastructure ID, requested fields, and users** through one flexible search endpoint. This avoids creating a separate endpoint for every possible search.
+The event API was designed to accept many search conditions through the same endpoint rather than requiring a separate endpoint for each possible search.
+
+For example, `event_schedule.js` can combine:
+
+- `event_name`
+- a specific `event_date`
+- a `start_date` / `end_date` range
+- `start_time` and/or `end_time`
+- `infra_type`
+- `infra_ID`
+- `include_children`
+- `include_users`
+- `fields`
+
+It also checks that combinations make sense. For example, an `infra_ID` cannot be supplied without an `infra_type`, and a single `event_date` cannot be combined with a date range.
+
+The `fields` parameter additionally lets the caller choose which event fields should be returned.
 
 ### 4. Frontend and backend use different levels of information
 
-The frontend can work with things like **campus name + building name + floor number**, while the backend handles converting those into the database IDs needed for queries.
+The frontend can work with information that is convenient for the application, while the backend handles the database IDs required to perform the query.
 
-For example, `printRooms()` sends a `campus_name`, `building_name`, and `floor_number`. The backend then finds the corresponding `campus_ID`, `building_ID`, and `floor_ID` before querying the rooms.
+For example, `printRooms()` sends:
 
-### 5. Calculated status for the map
-
-The status system can answer more than **"what status was saved for this object?"** It can also answer **"is anything inside this area unavailable?"**
-
-For example, the floor-status API checks the rooms, hallways, and elevator/stairway fragments on that floor. If any of those are `UNAVAILABLE`, the floor's `effective_status` can be returned as `UNAVAILABLE`, even when the floor's own stored status is `AVAILABLE`.
+```text
+campus_name
+building_name
+floor_number
