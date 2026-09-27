@@ -53,3 +53,32 @@ For example, `printRooms()` sends:
 campus_name
 building_name
 floor_number
+
+The backend then:
+
+1. finds the `campus_ID` from the campus name
+2. finds the `building_ID` belonging to that campus
+3. finds the `floor_ID` belonging to that building and floor number
+4. uses the `floor_ID` to retrieve the rooms
+
+The frontend therefore does not have to know or carry around the database IDs for every parent object.
+
+### 5. The database structure supports a real infrastructure hierarchy
+
+The database does not treat the campus map as one flat collection of objects. It represents the relationships between infrastructure directly.
+
+For example:
+
+`Campus → Building → Floor → Room`
+
+and:
+
+`Building → Elevator/Stairway → Elevator/Stairway Fragment → Floor`
+
+and:
+
+`Floor → Zone → Room`
+
+These relationships are then used by the backend for things such as event searches, status calculations, room lookup, and assigning rooms to zones.
+
+The result is that the backend can answer questions about an object based on where that object exists in the campus structure, rather than requiring the frontend to already know all of those relationships.
