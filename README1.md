@@ -6,10 +6,10 @@
 
 - The database, the composite API calls, the front-end wrapper functions for the API calls, and the print menu for primitive testing of the API calls.
 
-- **Database filepath:** `Tiger-World/group5_backend/db`
-- **Database-node (1st half of API calls) filepath:** `Tiger-World/group5_backend/node`
-- **Node-frontend (2nd half of API calls) filepath:** `Tiger-World/group5_frontend/src/services`
-- **Wrapper functions filepath:** `Tiger-World/group5_frontend/src/frontend_CLI.js`
+  - **Database filepath:** `Tiger-World/group5_backend/db`
+  - **Database-node (1st half of API calls) filepath:** `Tiger-World/group5_backend/node`
+  - **Node-frontend (2nd half of API calls) filepath:** `Tiger-World/group5_frontend/src/services`
+  - **Wrapper functions filepath:** `Tiger-World/group5_frontend/src/frontend_CLI.js`
 
 > **NOTE:** Some of this content was generated with the heavily monitored assistance of GenAI.
 
