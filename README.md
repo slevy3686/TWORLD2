@@ -6,7 +6,7 @@
    1. Download & install:
       1. [https://dev.mysql.com/downloads/mysql/](https://dev.mysql.com/downloads/mysql/)
          1. Open & run the installer.
-         2. Set root password: `abcd1234`
+         2. Set root password: `(choose your root password)`
 
 2. **Node.js**
    1. [https://nodejs.org/en/download](https://nodejs.org/en/download)
