@@ -13,6 +13,9 @@
 
 > **NOTE:** Some of the above was generated with the heavily monitored assistance of GenAI.
 
+## Some Wrapper Functions in Action
+
+- using the wrapper-function tester I made, which takes the form of a "print-menu".
 https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326
 
 ## Strongest Design Points
