@@ -13,7 +13,7 @@
 
 > **NOTE:** Some of the above was generated with the heavily monitored assistance of GenAI.
 
-## Some Wrapper Functions in Action
+## Some Wrapper Functions (and subsequently the API Calls & Database) in Action
 
 - Using the wrapper-function testing applicaiton I made, which takes the form of a "print-menu".
 
