@@ -11,7 +11,7 @@
   - **Node-frontend (2nd half of API calls) filepath:** `Tiger-World/group5_frontend/src/services`
   - **Wrapper functions filepath:** `Tiger-World/group5_frontend/src/frontend_CLI.js`
 
-> **NOTE:** Some of this content was generated with the heavily monitored assistance of GenAI.
+> **NOTE:** Some of the above was generated with the heavily monitored assistance of GenAI.
 
 https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326
 
