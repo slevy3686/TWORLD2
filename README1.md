@@ -84,3 +84,117 @@ For example, a room can be:
 This means the database relationships form a shared foundation for the application's different features rather than each feature maintaining its own separate representation of the campus.
 
 ## Try it Yourself
+
+### Step 0 - Prerequisites
+
+1. **MySQL**
+   1. Download & install:
+      1. https://dev.mysql.com/downloads/mysql/
+         1. Open & run the installer.
+         2. Set a root password.
+
+2. **Node.js**
+   1. Download & install:
+      1. https://nodejs.org/en/download
+         1. Verify the download version:
+            1. In Terminal: `node -v`
+
+### Step 1 - Setting Up the Database
+
+1. Go to **System Preferences → MySQL**
+   1. Click **Start MySQL Server**.
+   2. This is also where you can uninstall MySQL.
+
+2. Create the database
+   1. If MySQL was installed for all users:
+      1. Via Terminal, navigate to:
+         `/usr/local/mysql/bin/mysql -u root -p`
+      2. Enter the password you set during installation.
+      3. Once inside the MySQL prompt, you should see something like:
+         `mysql>`
+      4. From there, enter:
+         `CREATE DATABASE mydatabase;`
+         `USE mydatabase;`
+      5. Enter the following to return to Terminal:
+         `exit`
+
+3. Load the database schema
+   1. Navigate via Terminal to the folder containing the SQL files:
+      1. `Tiger-World -> group5_backend -> db -> ddl_01_tables`
+      2. Enter `ls` to get the files in here.
+   2. Re-enter MySQL:
+      1. If MySQL was installed for all users:
+         1. Via Terminal, navigate to:
+            `/usr/local/mysql/bin/mysql -u root -p`
+         2. Enter the password you set during installation.
+         3. Once inside the MySQL prompt, you should see something like:
+            `mysql>`
+            1. Enter the following command:
+               `USE mydatabase;`
+            2. **First time only:** Run each SQL file in order to create tables and any initial data:
+               1. `SOURCE [filename].sql;`
+
+### Step 2 - Start the Backend Server
+
+1. Navigate via Terminal to:
+   `Tiger-World -> group5_backend -> node`
+
+2. **First time only:** Download dependencies (`node_modules`) by entering the following into the Terminal:
+   `npm install`
+   1. You will have to run `npm install` for the frontend and backend, only once each.
+
+3. Start the server by entering either into the Terminal:
+
+   1. `node index.js`
+      1. Starts the server automatically.
+      2. No auto-reload.
+      3. If you edit backend code, you must stop it and run it again.
+
+   2. `npm run dev`
+      1. Uses nodemon.
+      2. Automatically restarts the server when backend files change.
+
+4. The console should say:
+   `server running on port 3000`
+
+5. When finished / to close the server:
+   `ctrl + c`
+
+#### bcrypt giving you grief?
+
+From `group5_backend -> node`:
+
+```bash
+rm -rf node_modules
+rm package-lock.json
+npm install
+```
+
+### Step 3 - Start the Frontend Server
+
+1. Navigate via Terminal to:
+   `Tiger-World -> group5_frontend`
+
+2. **First time only:** Download dependencies (`node_modules`) by entering the following into the Terminal:
+   `npm install`
+   1. You will have to run `npm install` for the frontend and backend, only once each.
+
+3. Start the frontend server by entering the following into the Terminal:
+   `npm run dev`
+
+### Step 4 - Command-Line Interface
+
+1. Open a new Terminal window or tab.
+   1. **Window**
+      1. `command + n` (Mac)
+      2. `File -> New Window`
+   2. **Tab**
+      1. `command + t`
+
+2. Via the Terminal, navigate to:
+   1. `Tiger-World -> group5_frontend -> src`
+   2. Enter the following into the Terminal:
+      `node frontend_CLI.js`
+      1. Running it with Node prints a menu in the Terminal, **NOT in the browser**.
+
+3. You should be able to use the given kit (a printed menu).
