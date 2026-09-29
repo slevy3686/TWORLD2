@@ -82,3 +82,5 @@ For example, a room can be:
 - used as part of the map's infrastructure structure
 
 This means the database relationships form a shared foundation for the application's different features rather than each feature maintaining its own separate representation of the campus.
+
+## Try it Yourself
