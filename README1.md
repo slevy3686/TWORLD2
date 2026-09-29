@@ -8,7 +8,7 @@
 
 - An attempt to create a precise global-positioning application for live routing between point A and point B within a localized institution (i.e., from classroom A in building A to classroom B in building B, where both building A and building B belong to the same campus).
 
-## My (Main/Most Notable) Contributions
+## My (Main/Most Notable) Contributions (the Contents of this Repository)
 
 - The database, the composite API calls, the front-end wrapper functions for the API calls, and the print menu for primitive testing of the API calls.
 
