@@ -66,7 +66,7 @@ The frontend was designed so that information selected by the user can be kept i
 
 For example, after selecting a campus, the frontend can pass the `campus_name` into the building request. After selecting a building, it can pass both `campus_name` and `building_name` into the floor request. After selecting a floor, it can continue passing those values along with the `floor_number` when requesting rooms or hallways.
 
-This keeps the frontend's current selections available as the user moves through **campus → building → floor → room**, while the backend resolves those names and numbers to the appropriate database IDs.
+**This keeps the frontend's current selections available as the user moves through **campus → building → floor → room**, while the backend resolves those names and numbers to the appropriate database IDs.**
 
 ### 5. One infrastructure model is reused across multiple features
 
