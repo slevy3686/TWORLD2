@@ -19,7 +19,7 @@
 
 https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326
 
-## Strongest Design Points
+## Strongest (Database & API-Call) Design Points
 
 ### 1. Connections model the campus as a traversable graph
 
