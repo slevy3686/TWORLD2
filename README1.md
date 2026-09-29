@@ -13,8 +13,7 @@
 
 > **NOTE:** Some of this content was generated with the heavily monitored assistance of GenAI.
 
-<video src="https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326
-" width="400" controls></video>
+<video src="https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326" width="100" controls></video>
 
 
 https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326
