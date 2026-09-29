@@ -1,3 +1,9 @@
+## Table of Contents
+
+- [What is it?](https://github.com/slevy3686/TWORLD2/blob/main/README1.md#what-is-it)
+- [Strongest (Database & API-Call) Design Points](https://github.com/slevy3686/TWORLD2/blob/main/README1.md#strongest-database--api-call-design-points)
+- [Try it Yourself](https://github.com/slevy3686/TWORLD2/blob/main/README1.md#try-it-yourself)
+
 ## What is it?
 
 - An attempt to create a precise global-positioning application for live routing between point A and point B within a localized institution (i.e., from classroom A in building A to classroom B in building B, where both building A and building B belong to the same campus).
