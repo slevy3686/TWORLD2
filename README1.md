@@ -15,7 +15,7 @@
 
 ## Some Wrapper Functions in Action
 
-- using the wrapper-function tester I made, which takes the form of a "print-menu".
+- Using the wrapper-function testing applicaiton I made, which takes the form of a "print-menu".
 
 https://github.com/user-attachments/assets/dae6bb5c-47c6-4f4c-9edd-20eca9448326
 
