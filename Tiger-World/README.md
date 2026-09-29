@@ -1,9 +1,9 @@
 # Tiger World : Team 5
 # Members
-SCRUM Master: Mia Miranda (Astarosa-MM)\
-UI/UX Designer: Katherine Winchester (kwinch)\
-Software Architect: Stella Levy (slevy7736)\
-Senior Developer: Brent Bolden (BrentBolden)\
+SCRUM Master: Mia Miranda ([GitHub Name])\
+UI/UX Designer: Katherine Winchester ([GitHub Name])\
+Software Architect: Stella Levy ([GitHub Name])\
+Senior Developer: Brent Bolden ([GitHub Name])\
 Product Tester: Khoa Vu ([GitHub Name])
 
 # About Our Software
@@ -14,38 +14,38 @@ Tiger World is a mobile app that provides campus navigation. It displays the the
 # Important Links
 Kanban Board: https://lsu-csc4330-tiger-world.atlassian.net/jira/software/projects/SCRUM/boards/1 \
 Designs: [link]\
-Styles Guide(s): https://docs.google.com/document/d/13S4DtvSZUoB4N65jG5OZDvNeZFt2y_8YWrdrPT-IP1Y/edit?tab=t.0 
+Styles Guide(s): [link]
 
 # How to Run Dev and Test Environment
 
 ## Dependencies
--Ionic \
--npm \
--Node.js
+- List all dependencies here
+- Don't forget to include versions
 ### Downloading Dependencies
-To use npm you must install Node.js from https://nodejs.org/en/download. Afterwards go to the root directory of the project and run npm install to install ionic and other dependecies.
-
-```sh
-npm install
-```
-Then go into cmd and go into the project root directory and run these commands.
-```sh
-npm install @vis.gl/react-google-maps
-npm install @capacitor/geolocation
-```
-Finally run dev and follow the localhost link.
-```sh
-npm run dev
-```
+Describe where to download the dependencies here. Some will likely require a web download. Provide links here. For IDE extensions, make sure your project works with the free version of them, and detail which IDE(s) these are available in. 
 
 ## Commands
 Describe how the commands and process to launch the project on the main branch in such a way that anyone working on the project knows how to check the affects of any code they add.
 
-To install ionic and the other dependencies go to the root folder of the project and run npm install:
 ```sh
-npm install
+Example terminal command syntax
 ```
-To run the dev server.
-```sh
-npm run dev
+
+It is very common in these sections to see code in peculiar boxes to help them stand out. Check the markdown section of the Project Specifications to see how to add more / customize these.
+
+```python
+def code_highlight_example(m: int, m: float, s: str) -> str:
+	return s + str(n*m)
+```
+
+```java
+public static void main(String[] args){
+	System.out.println("Hello, World!");
+}
+```
+
+```c#
+static void Main(){
+	Console.WriteLine("Hello, World!");
+}
 ```
